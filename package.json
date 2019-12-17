@@ -1,0 +1,21 @@
+{
+  "name": "linden-honey-scraper",
+  "version": "1.0.0",
+  "description": "Lyrics scraper service powered by Koa.js",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src",
+    "debug": "node --inspect src",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linden-honey/linden-honey-scraper.git"
+  },
+  "author": "Alexander Babai <aliaksandr.babai@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/linden-honey/linden-honey-scraper/issues"
+  },
+  "homepage": "https://github.com/linden-honey/linden-honey-scraper#readme"
+}
