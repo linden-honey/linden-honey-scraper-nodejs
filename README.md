@@ -40,7 +40,7 @@ npm run debug
 Run tests:
 
 ```bash
-npm test
+npm run test
 ```
 
 ### Docker
