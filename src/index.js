@@ -1,7 +1,7 @@
 const express = require('express')
 const { Router } = express
 
-const { config } = require('./utils')
+const { config } = require('./utils/config')
 const { Scraper } = require('./services')
 const { ScraperController } = require('./controllers')
 
