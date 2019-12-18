@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/linden-honey/linden-honey-scraper/issues"
   },
-  "homepage": "https://github.com/linden-honey/linden-honey-scraper#readme"
+  "homepage": "https://github.com/linden-honey/linden-honey-scraper#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
