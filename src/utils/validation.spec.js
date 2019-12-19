@@ -11,7 +11,7 @@ describe('Validation module', () => {
             expect(validator).to.exist
             const input = {}
             const result = validator(input)
-            expect(result).is.equals(input)
+            expect(result).equals(input)
         })
         it('Should return validator with default error', () => {
             const predicate = (_) => false
