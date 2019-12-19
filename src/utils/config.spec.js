@@ -4,7 +4,7 @@ const { expect, assert } = require('chai')
 const { getEnv, config } = require('./config')
 
 describe('Config module', () => {
-    describe('#getEnv(key, ?defaultValue)', () => {
+    describe('#getEnv(key, defaultValue?)', () => {
         it('Should return default value', () => {
             const key = `KEY_${new Date().getMilliseconds()}`
             const defaultValue = 'defaultValue'
