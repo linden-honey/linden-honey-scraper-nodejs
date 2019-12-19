@@ -6,7 +6,7 @@ LABEL name="linden-honey-scraper" \
 ARG WORK_DIR=/linden-honey
 WORKDIR $WORK_DIR
 
-ENV PORT=80
+ENV SERVER_PORT=80
 
 COPY package.json package-lock.json $WORK_DIR
 RUN npm run i
