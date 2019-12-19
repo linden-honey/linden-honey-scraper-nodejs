@@ -1,9 +1,28 @@
-const createValidator = (validationPredicate, errorSupplier) => object => {
-    if(!validationPredicate(object)) {
-        const error = typeof errorSupplier === 'function' ? errorSupplier() : new Error("Validation failed")
-        throw error
+const createValidator = (predicate, error) => {
+    if (typeof predicate !== 'function') {
+        throw new Error('Invalid predicate!')
     }
-    return object
+    let e
+    switch (typeof error) {
+        case 'function':
+            e = error()
+            break
+        case 'object':
+            e = error
+            break
+        case 'string':
+            e = new Error(error)
+            break
+        default:
+            e = new Error('Validation failed!')
+            break
+    }
+    return object => {
+        if (!predicate(object)) {
+            throw e
+        }
+        return object
+    }
 }
 
 module.exports = {
