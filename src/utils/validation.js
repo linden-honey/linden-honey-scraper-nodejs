@@ -17,7 +17,7 @@ const createValidator = (predicate, error) => {
             e = new Error('Validation failed!')
             break
     }
-    return object => {
+    return (object) => {
         if (!predicate(object)) {
             throw e
         }
