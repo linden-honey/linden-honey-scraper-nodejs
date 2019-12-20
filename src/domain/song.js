@@ -1,14 +1,5 @@
-const UNKNOWN = 'неизвестен'
-
-const defaultState = {
-    title: UNKNOWN,
-    author: UNKNOWN,
-    album: UNKNOWN,
-    verses: []
-}
-
 module.exports = class Song {
-    constructor({ title = UNKNOWN, author = UNKNOWN, album = UNKNOWN, verses = [] } = defaultState) {
+    constructor({ title, author, album, verses = [] }) {
         this.title = title
         this.author = author
         this.album = album
