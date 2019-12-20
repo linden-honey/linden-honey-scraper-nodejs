@@ -1,6 +1,11 @@
 const cheerio = require('cheerio')
 
-const { Preview, Quote, Song, Verse } = require('../domain')
+const {
+    Preview,
+    Quote,
+    Song,
+    Verse,
+} = require('../domain')
 
 const parseHtml = (html) => cheerio.load(html)
 const isNotBlank = (string) => string && string.trim().length > 0
@@ -19,7 +24,9 @@ const parseVerse = (html) => {
     return new Verse(quotes)
 }
 
-const parseLyrics = (html) => isNotBlank(html) ? html.split(/(?:<br\>\s*){2,}/g).map(parseVerse) : []
+const parseLyrics = (html) => (
+    isNotBlank(html) ? html.split(/(?:<br>\s*){2,}/g).map(parseVerse) : []
+)
 
 const parseSong = (html) => {
     const $ = parseHtml(html)
@@ -29,7 +36,12 @@ const parseSong = (html) => {
     const album = $('p:has(strong:contains(Альбом))').text().split(': ')[1] || unknown
     const lyricsHtml = $('p:last-of-type').html()
     const verses = parseLyrics(lyricsHtml)
-    return new Song({ title, author, album, verses })
+    return new Song({
+        title,
+        author,
+        album,
+        verses,
+    })
 }
 
 const parsePreviews = (html) => {
@@ -51,5 +63,5 @@ module.exports = {
     parseVerse,
     parseLyrics,
     parseSong,
-    parsePreviews
+    parsePreviews,
 }

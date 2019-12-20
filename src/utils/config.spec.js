@@ -32,4 +32,3 @@ describe('Config module', () => {
         })
     })
 })
-

@@ -1,23 +1,30 @@
-//external dependencies
+/* external dependencies */
 
-const {} = require('../utils/parser')
-const {} = require('../utils/validation')
+// const { parser } = require('../utils/parser')
+// const { createValidator } = require('../utils/validation')
 
 class Scraper {
     constructor() {
-
+        // TODO
+        console.log('create scraper')
     }
 
-    async fetchSongs() {
+    fetchSongs = async () => {
+        // TODO
+        console.log('fetch songs')
         return []
     }
 
-    async fetchSong(id) {
-        
+    fetchSong = async (id) => {
+        // TODO
+        console.log('fetch song')
+        return { id }
     }
 
-    async fetchPreviews() {
-        
+    fetchPreviews = async () => {
+        // TODO
+        console.log('fetch previews')
+        return []
     }
 }
 

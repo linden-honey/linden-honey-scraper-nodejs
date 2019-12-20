@@ -26,5 +26,5 @@ const createValidator = (predicate, error) => {
 }
 
 module.exports = {
-    createValidator
+    createValidator,
 }
