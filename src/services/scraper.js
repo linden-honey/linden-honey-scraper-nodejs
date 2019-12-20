@@ -35,11 +35,20 @@ class Scraper {
 
     fetchSong = async (id) => {
         console.debug(`Fetching song with id ${id}`)
-        const song = await retry(async (_, attempt) => {
-            console.debug(`Fetching song with id ${id} - attempt ${attempt}`)
-            const { data } = await this.client.get(`text_print.php?area=go_texts&id=${id}`)
-            return validateSong(parseSong(data))
-        }, this.retryConfig)
+        const song = await retry(
+            async (_, attempt) => {
+                console.debug(`Fetching song with id ${id} - attempt ${attempt}`)
+                const { data } = await this.client.get(`text_print.php?area=go_texts&id=${id}`)
+                return validateSong(parseSong(data))
+            },
+            {
+                ...this.retryConfig,
+                onRetry: (error) => {
+                    console.debug(`Fetching attempt for song with id ${id} is failed`)
+                    console.debug('Retry is caused by:', error)
+                },
+            },
+        )
         console.debug(`Successfully fetched song with id ${id} and title "${song.title}"`)
         return song
     }
