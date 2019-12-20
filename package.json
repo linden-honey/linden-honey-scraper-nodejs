@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src",
     "debug": "node --inspect src",
-    "test": "mocha src/**/*.spec.js"
+    "test": "mocha src/**/*.spec.js",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,11 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
     "mocha": "^6.2.2"
   }
 }
