@@ -11,7 +11,7 @@
 [node-url]: https://nodejs.org/en/download/
 [release-image]: https://img.shields.io/github/release/linden-honey/linden-honey-scraper.svg?style=flat-square
 [release-url]: https://github.com/linden-honey/linden-honey-scraper/releases
-[ci-image]: https://img.shields.io/github/workflow/status/linden-honey/linden-honey-scraper/CI
+[ci-image]: https://img.shields.io/github/workflow/status/linden-honey/linden-honey-scraper/CI?style=flat-square
 [ci-url]: https://github.com/linden-honey/linden-honey-scraper/actions
 [license-image]: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
 [license-url]: https://github.com/linden-honey/linden-honey-scraper/blob/master/LICENSE
