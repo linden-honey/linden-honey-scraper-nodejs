@@ -9,7 +9,7 @@ const app = express()
 const songController = new SongController({
     scraper: new Scraper({
         baseUrl: config.application.scraper.baseUrl,
-        retry: config.application.scraper.retry,
+        retryConfig: config.application.scraper.retry,
     }),
 })
 const { Router } = express

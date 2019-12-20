@@ -16,11 +16,12 @@ const responseDecoderInterceptor = (encoding) => (response) => {
 }
 
 class Scraper {
-    constructor({ baseUrl, retry }) {
+    constructor({ baseUrl, retryConfig }) {
         this.client = axios.create({
             baseURL: baseUrl,
             responseType: 'arraybuffer',
         })
+        this.retryConfig = retryConfig
         this.client.interceptors.response.use(responseDecoderInterceptor('windows-1251'))
     }
 
@@ -38,7 +39,7 @@ class Scraper {
             console.debug(`Fetching song with id ${id} - attempt ${attempt}`)
             const { data } = await this.client.get(`text_print.php?area=go_texts&id=${id}`)
             return validateSong(parseSong(data))
-        }, this.retry)
+        }, this.retryConfig)
         console.debug(`Successfully fetched song with id ${id} and title "${song.title}"`)
         return song
     }
