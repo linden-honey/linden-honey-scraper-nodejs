@@ -2,24 +2,26 @@ const express = require('express')
 
 const { config } = require('./utils/config')
 const { Scraper } = require('./services')
-const { ScraperController } = require('./controllers')
+const { SongController } = require('./controllers')
 
 const app = express()
 
-const scraperController = new ScraperController({
+const songController = new SongController({
     scraper: new Scraper({
         baseUrl: config.application.scraper.baseUrl,
         retry: config.application.scraper.retry,
     }),
 })
 const { Router } = express
+
 const apiRouter = Router({
     caseSensitive: false,
 })
-
-apiRouter.get('/songs', scraperController.getSongs)
-apiRouter.get('/songs/:id', scraperController.getSong)
-apiRouter.get('/previews', scraperController.getPreviews)
+apiRouter.get('/songs', [
+    songController.getPreviews,
+    songController.getSongs,
+])
+apiRouter.get('/songs/:id', songController.getSong)
 
 app.use(config.application.rest.basePath, apiRouter)
 

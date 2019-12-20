@@ -1,1 +1,1 @@
-exports.ScraperController = require('./scraper-controller')
+exports.SongController = require('./song-controller')
