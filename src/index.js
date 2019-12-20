@@ -7,7 +7,10 @@ const { ScraperController } = require('./controllers')
 const app = express()
 
 const scraperController = new ScraperController({
-    scraper: new Scraper(),
+    scraper: new Scraper({
+        baseUrl: config.application.scraper.baseUrl,
+        retry: config.application.scraper.retry,
+    }),
 })
 const { Router } = express
 const apiRouter = Router({
@@ -15,6 +18,8 @@ const apiRouter = Router({
 })
 
 apiRouter.get('/songs', scraperController.getSongs)
+apiRouter.get('/songs/:id', scraperController.getSong)
+apiRouter.get('/previews', scraperController.getPreviews)
 
 app.use(config.application.rest.basePath, apiRouter)
 
