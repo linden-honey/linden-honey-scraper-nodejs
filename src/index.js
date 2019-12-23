@@ -4,7 +4,7 @@ const { config } = require('./utils/config')
 const { Scraper } = require('./services')
 const { SongController, DocsController } = require('./controllers')
 
-const openApiSpec = require('./docs/oas.json')
+const { oas } = require('./docs')
 
 const app = express()
 
@@ -12,7 +12,7 @@ const { Router } = express
 
 const docsRouter = new Router()
 const docsController = new DocsController({
-    spec: openApiSpec,
+    spec: oas,
 })
 docsRouter.use('/', docsController.swaggerUiStatic)
 docsRouter.get('/api-docs', docsController.getSpec)
