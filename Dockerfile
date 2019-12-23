@@ -13,5 +13,5 @@ RUN npm run i
 
 COPY src ./src
 
-EXPOSE $PORT
+EXPOSE $SERVER_PORT
 CMD [ "npm", "start" ]
