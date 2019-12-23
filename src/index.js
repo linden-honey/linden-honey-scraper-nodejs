@@ -2,20 +2,28 @@ const express = require('express')
 
 const { config } = require('./utils/config')
 const { Scraper } = require('./services')
-const { SongController } = require('./controllers')
+const { SongController, DocsController } = require('./controllers')
+
+const openApiSpec = require('./docs/oas.json')
 
 const app = express()
 
+const { Router } = express
+
+const docsRouter = new Router()
+const docsController = new DocsController({
+    spec: openApiSpec,
+})
+docsRouter.use('/', docsController.swaggerUiStatic)
+docsRouter.get('/api-docs', docsController.getSpec)
+docsRouter.get('/', docsController.getSwaggerUi)
+
+const apiRouter = new Router()
 const songController = new SongController({
     scraper: new Scraper({
         baseUrl: config.application.scraper.baseUrl,
         retryConfig: config.application.scraper.retry,
     }),
-})
-const { Router } = express
-
-const apiRouter = Router({
-    caseSensitive: false,
 })
 apiRouter.get('/songs', [
     songController.getPreviews,
@@ -23,6 +31,7 @@ apiRouter.get('/songs', [
 ])
 apiRouter.get('/songs/:id', songController.getSong)
 
+app.use('/', docsRouter)
 app.use(config.application.rest.basePath, apiRouter)
 
 app.listen(config.server.port, () => {
