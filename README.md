@@ -1,6 +1,6 @@
 # Linden Honey Scraper
 
-> Lyrics scraper service powered by Koa.js
+> Lyrics scraper service powered by Express.js
 
 [![node version][node-image]][node-url]
 [![build status][ci-image]][ci-url]
@@ -19,7 +19,7 @@
 ## Technologies
 
 - [Node](https://nodejs.org/)
-- [Koa.js](https://koajs.com/)
+- [Express.js](https://expressjs.com/)
 
 ## Usage
 
