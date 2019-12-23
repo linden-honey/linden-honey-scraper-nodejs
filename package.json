@@ -1,7 +1,7 @@
 {
   "name": "linden-honey-scraper",
   "version": "1.0.0",
-  "description": "Lyrics scraper service powered by Koa.js",
+  "description": "Lyrics scraper service powered by Express.js",
   "main": "src/index.js",
   "scripts": {
     "start": "node src",
