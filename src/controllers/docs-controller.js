@@ -3,7 +3,9 @@ const swaggerUi = require('swagger-ui-express')
 class DocsController {
     constructor({ spec }) {
         this.spec = spec
-        this.getSwaggerUi = swaggerUi.setup(this.spec)
+        this.getSwaggerUi = swaggerUi.setup(null, {
+            swaggerUrl: '/api-docs',
+        })
     }
 
     getSpec = (_, res) => {
