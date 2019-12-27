@@ -22,7 +22,7 @@ class Scraper {
             responseType: 'arraybuffer',
         })
         this.retryConfig = retryConfig
-        this.client.interceptors.response.use(responseDecoderInterceptor('windows-1251'))
+        this.client.interceptors.response.use(responseDecoderInterceptor('cp-1251'))
     }
 
     fetchSongs = async () => {
@@ -45,7 +45,7 @@ class Scraper {
                 ...this.retryConfig,
                 onRetry: (error) => {
                     console.debug(`Fetching attempt for song with id ${id} is failed`)
-                    console.debug('Retry is caused by:', error)
+                    console.debug('Retry is caused by:', error.message)
                 },
             },
         )
