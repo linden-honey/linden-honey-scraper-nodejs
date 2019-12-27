@@ -6,8 +6,8 @@ const { parsePreviews, parseSong } = require('../utils/parser')
 const { createValidator } = require('../utils/validation')
 
 const validateSong = createValidator(
-    (song) => song && song.verses && song.verses.length,
-    () => new Error('Song validation failed'),
+    (song) => song && song.title && song.verses && song.verses.length,
+    () => new Error('song validation failed'),
 )
 
 const responseDecoderInterceptor = (encoding) => (response) => {
@@ -28,18 +28,22 @@ class Scraper {
     fetchSongs = async () => {
         console.debug('Songs fetching started')
         const previews = await this.fetchPreviews()
-        const songs = await Promise.all(previews.map(({ id }) => this.fetchSong(id)))
+        const promises = await Promise.allSettled(previews.map(({ id }) => this.fetchSong(id)))
+        const songs = promises
+            .filter(({ status }) => status === 'fulfilled')
+            .filter(({ value }) => value)
+            .map(({ value }) => value)
         console.debug('Songs fetching successfully finished')
         return songs
     }
 
     fetchSong = async (id) => {
         console.debug(`Fetching song with id ${id}`)
-        const song = await retry(
+        const html = await retry(
             async (_, attempt) => {
                 console.debug(`Fetching song with id ${id} - attempt ${attempt}`)
                 const { data } = await this.client.get(`text_print.php?area=go_texts&id=${id}`)
-                return validateSong(parseSong(data))
+                return data
             },
             {
                 ...this.retryConfig,
@@ -49,8 +53,15 @@ class Scraper {
                 },
             },
         )
-        console.debug(`Successfully fetched song with id ${id} and title "${song.title}"`)
-        return song
+        try {
+            const song = validateSong(parseSong(html))
+            console.debug(`Successfully fetched song with id ${id} and title "${song.title}"`)
+            return song
+        } catch (error) {
+            const message = `Fetching song with id ${id} is failed due to: ${error.message}`
+            console.warn(message)
+            throw new Error(message);
+        }
     }
 
     fetchPreviews = async () => {
