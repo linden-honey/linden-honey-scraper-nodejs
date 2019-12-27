@@ -22,7 +22,7 @@ class Scraper {
             responseType: 'arraybuffer',
         })
         this.retryConfig = retryConfig
-        this.client.interceptors.response.use(responseDecoderInterceptor('cp-1251'))
+        this.client.interceptors.response.use(responseDecoderInterceptor('cp1251'))
     }
 
     fetchSongs = async () => {
