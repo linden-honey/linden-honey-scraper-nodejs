@@ -30,10 +30,9 @@ const parseLyrics = (html) => (
 
 const parseSong = (html) => {
     const $ = parseHtml(html)
-    const unknown = 'неизвестен'
-    const title = $('h2').text() || unknown
-    const author = $('p:has(strong:contains(Автор))').text().split(': ')[1] || unknown
-    const album = $('p:has(strong:contains(Альбом))').text().split(': ')[1] || unknown
+    const title = $('h2').text() || undefined
+    const author = $('p:has(strong:contains(Автор))').text().split(': ')[1] || undefined
+    const album = $('p:has(strong:contains(Альбом))').text().split(': ')[1] || undefined
     const lyricsHtml = $('p:last-of-type').html()
     const verses = parseLyrics(lyricsHtml)
     return new Song({

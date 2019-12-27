@@ -114,9 +114,9 @@ describe('Parser', () => {
             const html = ''
             const song = parser.parseSong(html)
             expect(song).to.be.exist.and.to.be.an('object')
-            expect(song).to.have.property('title').that.is.a('string').equals('неизвестен')
-            expect(song).to.have.property('author').that.is.a('string').equals('неизвестен')
-            expect(song).to.have.property('album').that.is.a('string').equals('неизвестен')
+            expect(song).to.have.property('title').that.is.undefined
+            expect(song).to.have.property('author').that.is.undefined
+            expect(song).to.have.property('album').that.is.undefined
             expect(song).to.have.property('verses').that.is.an('array').with.lengthOf(0)
         })
 
@@ -152,7 +152,7 @@ describe('Parser', () => {
             `
             const song = parser.parseSong(html)
             expect(song).to.be.exist.and.to.be.an('object')
-            expect(song).to.have.property('title').that.is.a('string').equals('неизвестен')
+            expect(song).to.have.property('title').that.is.undefined
             expect(song).to.have.property('author').that.is.a('string').equals('Е.Летов')
             expect(song).to.have.property('album').that.is.a('string').equals('Всё идёт по плану')
             expect(song)
@@ -170,7 +170,7 @@ describe('Parser', () => {
             const song = parser.parseSong(html)
             expect(song).to.be.exist.and.to.be.an('object')
             expect(song).to.have.property('title').that.is.a('string').equals('Всё идёт по плану')
-            expect(song).to.have.property('author').that.is.a('string').equals('неизвестен')
+            expect(song).to.have.property('author').that.is.undefined
             expect(song).to.have.property('album').that.is.a('string').equals('Всё идёт по плану')
             expect(song)
                 .to.have.property('verses')
@@ -188,7 +188,7 @@ describe('Parser', () => {
             expect(song).to.be.exist.and.to.be.an('object')
             expect(song).to.have.property('title').that.is.a('string').equals('Всё идёт по плану')
             expect(song).to.have.property('author').that.is.a('string').equals('Е.Летов')
-            expect(song).to.have.property('album').that.is.a('string').equals('неизвестен')
+            expect(song).to.have.property('album').that.is.undefined
             expect(song)
                 .to.have.property('verses')
                 .that
