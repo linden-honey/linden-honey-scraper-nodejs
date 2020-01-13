@@ -1,9 +1,9 @@
 const { describe, it } = require('mocha')
-const { expect, assert } = require('chai')
+const { expect } = require('chai')
 
-const { getEnv, config } = require('./config')
+const { getEnv } = require('./env')
 
-describe('Config module', () => {
+describe('Env module', () => {
     describe('#getEnv(key, defaultValue?)', () => {
         it('Should return default value', () => {
             const key = `KEY_${new Date().getMilliseconds()}`
@@ -19,16 +19,11 @@ describe('Config module', () => {
             expect(result).is.equal(value)
         })
         it('Should throw an Error - missing key argument', () => {
-            assert.throws(() => getEnv(), "Missing 'key' argument!")
+            expect(() => getEnv()).to.throw("Missing 'key' argument!")
         })
         it('Should throw an Error - required key', () => {
             const key = `KEY_${new Date().getMilliseconds()}`
-            assert.throws(() => getEnv(key), `"${key}" is required!`)
-        })
-    })
-    describe('config', () => {
-        it('Should be an initialized and frozen object', () => {
-            expect(config).to.exist.and.to.be.frozen
+            expect(() => getEnv(key)).to.throw(`"${key}" is required!`)
         })
     })
 })

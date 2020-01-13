@@ -1,5 +1,5 @@
 const { describe, it } = require('mocha')
-const { expect, assert, use } = require('chai')
+const { expect, use } = require('chai')
 const { spy } = require('sinon')
 const sinonChai = require('sinon-chai')
 
@@ -19,7 +19,7 @@ describe('Validation module', () => {
                     .to.be.a('function')
             })
             it('Should throw an Error - invalid predicate', () => {
-                assert.throws(() => createValidator(), 'Invalid predicate!')
+                expect(() => createValidator()).to.throw('Invalid predicate!')
             })
         })
         describe('Validation logic', () => {
@@ -34,7 +34,7 @@ describe('Validation module', () => {
                 const object = {}
                 const predicate = spy(() => false)
                 const validator = createValidator(predicate)
-                assert.throws(() => validator(object), 'Validation failed!')
+                expect(() => validator(object)).to.throw('Validation failed!')
             })
             describe('Should fail validation custom error', () => {
                 it('pass error supplier', () => {
@@ -42,7 +42,7 @@ describe('Validation module', () => {
                     const predicate = spy(() => false)
                     const errorMessage = 'ERROR'
                     const validator = createValidator(predicate, () => new Error(errorMessage))
-                    assert.throws(() => validator(object), errorMessage)
+                    expect(() => validator(object)).to.throw(errorMessage)
                     expect(predicate).to.be.calledOnceWith(object)
                 })
                 it('pass message', () => {
@@ -50,7 +50,7 @@ describe('Validation module', () => {
                     const predicate = spy(() => false)
                     const errorMessage = 'ERROR'
                     const validator = createValidator(predicate, errorMessage)
-                    assert.throws(() => validator(object), errorMessage)
+                    expect(() => validator(object)).to.throw(errorMessage)
                     expect(predicate).to.be.calledOnceWith(object)
                 })
                 it('pass error object', () => {
@@ -58,7 +58,7 @@ describe('Validation module', () => {
                     const predicate = spy(() => false)
                     const errorMessage = 'ERROR'
                     const validator = createValidator(predicate, new Error(errorMessage))
-                    assert.throws(() => validator(object), errorMessage)
+                    expect(() => validator(object)).to.throw(errorMessage)
                     expect(predicate).to.be.calledOnceWith(object)
                 })
             })
