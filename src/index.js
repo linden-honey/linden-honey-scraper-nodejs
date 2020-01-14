@@ -5,7 +5,7 @@ const config = require('./utils/config')
 const { Scraper } = require('./services')
 const { SongController, DocsController } = require('./controllers')
 
-const { oas } = require('./docs')
+const { openapi } = require('./docs')
 
 const app = express()
 
@@ -31,7 +31,7 @@ const songRouter = new Router()
  * Declare documentation routes
  */
 const docsController = new DocsController({
-    spec: oas,
+    spec: openapi,
 })
 const docsRouter = new Router()
     .use('/', docsController.swaggerUiStatic)
