@@ -54,6 +54,7 @@ const parsePreviews = (html) => {
             const title = $link.text() || undefined
             return new Preview({ id, title })
         })
+        .filter(({ id }) => id)
 }
 
 module.exports = {

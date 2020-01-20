@@ -210,20 +210,12 @@ describe('Parser', () => {
             expect(previews)
                 .to.be.exist
                 .and
-                .to.be.an('array').with.lengthOf(4)
+                .to.be.an('array').with.lengthOf(2)
                 .and
                 .to.be.deep.have.members([
                     {
                         id: '1056899068',
                         title: 'Всё идёт по плану',
-                    },
-                    {
-                        id: undefined,
-                        title: "Unknown",
-                    },
-                    {
-                        id: undefined,
-                        title: undefined,
                     },
                     {
                         id: '1056901056',
