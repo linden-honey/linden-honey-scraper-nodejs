@@ -50,11 +50,10 @@ const parsePreviews = (html) => {
         .map((link) => {
             const $link = $(link)
             const path = $link.attr('href')
-            const id = isNotBlank(path) ? path.substring(path.lastIndexOf('/') + 1, path.indexOf('.')) : undefined
-            const title = $link.text()
+            const id = isNotBlank(path) ? path.substring(path.lastIndexOf('/') + 1, path.indexOf('.')) : undefined || undefined
+            const title = $link.text() || undefined
             return new Preview({ id, title })
         })
-        .filter(({ id }) => isNotBlank(id))
 }
 
 module.exports = {

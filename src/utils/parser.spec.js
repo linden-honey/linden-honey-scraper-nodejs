@@ -202,6 +202,7 @@ describe('Parser', () => {
                 <ul id="abc_list">
                 <li><a href="/texts/1056899068.html">Всё идёт по плану</a></li>
                 <li><a href="">Unknown</a></li>
+                <li><a href=""></a></li>
                 <li><a href="/texts/1056901056.html">Всё как у людей</a></li>
                 </ul>
             `
@@ -209,16 +210,26 @@ describe('Parser', () => {
             expect(previews)
                 .to.be.exist
                 .and
-                .to.be.an('array').with.lengthOf(2)
+                .to.be.an('array').with.lengthOf(4)
                 .and
-                .to.be.deep.have.members([{
-                    id: '1056899068',
-                    title: 'Всё идёт по плану',
-                },
-                {
-                    id: '1056901056',
-                    title: 'Всё как у людей',
-                }])
+                .to.be.deep.have.members([
+                    {
+                        id: '1056899068',
+                        title: 'Всё идёт по плану',
+                    },
+                    {
+                        id: undefined,
+                        title: "Unknown",
+                    },
+                    {
+                        id: undefined,
+                        title: undefined,
+                    },
+                    {
+                        id: '1056901056',
+                        title: 'Всё как у людей',
+                    },
+                ])
         })
 
         it('should return empty array', () => {
