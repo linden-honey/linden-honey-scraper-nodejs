@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   scraper:
-    image: lindenhoney/linden-honey-scraper:latest
+    image: lindenhoney/linden-honey-scraper-nodejs:latest
     build: .
     ports:
       - 8080:80

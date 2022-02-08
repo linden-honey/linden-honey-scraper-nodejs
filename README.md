@@ -2,23 +2,14 @@
 
 > Lyrics scraper service powered by Express.js
 
-[![node version][node-image]][node-url]
-[![build status][ci-image]][ci-url]
-[![release][release-image]][release-url]
-[![license][license-image]][license-url]
-
-[node-image]: https://img.shields.io/badge/node->=12-brightgreen.svg?style=flat-square
-[node-url]: https://nodejs.org/en/download/
-[release-image]: https://img.shields.io/github/release/linden-honey/linden-honey-scraper.svg?style=flat-square
-[release-url]: https://github.com/linden-honey/linden-honey-scraper/releases
-[ci-image]: https://img.shields.io/github/workflow/status/linden-honey/linden-honey-scraper/CI?style=flat-square
-[ci-url]: https://github.com/linden-honey/linden-honey-scraper/actions
-[license-image]: https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square
-[license-url]: https://github.com/linden-honey/linden-honey-scraper/blob/master/LICENSE
+[![build](https://img.shields.io/github/workflow/status/linden-honey/linden-honey-scraper-nodejs/CI)](https://github.com/linden-honey/linden-honey-scraper-nodejs/actions?query=workflow%3ACI)
+[![version](https://img.shields.io/badge/node->=12-brightgreen.svg?style=flat-square)](https://nodejs.org/)
+[![coverage](https://img.shields.io/codecov/c/github/linden-honey/linden-honey-scraper-nodejs)](https://codecov.io/github/linden-honey/linden-honey-scraper-nodejs)
+[![tag](https://img.shields.io/github/tag/linden-honey/linden-honey-scraper-nodejs.svg)](https://github.com/linden-honey/linden-honey-scraper-nodejs/tags)
 
 ## Technologies
 
-- [Node](https://nodejs.org/)
+- [Node.js](https://nodejs.org/)
 - [Express.js](https://expressjs.com/)
 
 ## Usage
@@ -65,4 +56,4 @@ docker-compose down
 
 ## Application instance
 
-[https://linden-honey-scraper.herokuapp.com](https://linden-honey-scraper.herokuapp.com)
+[https://linden-honey-scraper-nodejs.herokuapp.com](https://linden-honey-scraper-nodejs.herokuapp.com)
